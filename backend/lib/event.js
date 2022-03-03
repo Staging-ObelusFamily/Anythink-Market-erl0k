@@ -3,7 +3,8 @@ const fs = require("fs");
 
 const WILCO_ID = process.env.WILCO_ID || fs.readFileSync('../.wilco', 'utf8')
 
-const baseURL = 'https://wilco-engine.herokuapp.com';
+const baseURL = 'https://wilco-engine-staging.herokuapp.com';
+
 const axios = axiosLib.create({
   baseURL: baseURL,
   headers: {
@@ -12,6 +13,9 @@ const axios = axiosLib.create({
 });
 
 async function sendEvent(event, metadata) {
+  console.log(WILCO_ID)
+  console.log(baseURL)
+  
   const result = await axios.post(`/users/${WILCO_ID}/event`, JSON.stringify({ event, metadata }));
   return result.data;
 }
