@@ -48,8 +48,8 @@ ItemSchema.methods.toJSONFor = function(user) {
   return {
     slug: this.slug,
     title: this.title,
-    description: this.description,
-    image: this.image,
+      description: this.description,
+      image: this.image || `${process.env.SERVER_URI}/placeholder.png`,
     createdAt: this.createdAt,
     updatedAt: this.updatedAt,
     tagList: this.tagList,
